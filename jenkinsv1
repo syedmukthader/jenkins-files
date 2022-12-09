@@ -29,8 +29,8 @@ pipeline {
    scannerHome = tool 'sonar4.7'
   }
   steps { withSonarQubeEnv('sonar'){
-   sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
-                   -Dsonar.projectName=vprofile \
+   sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=profile \
+                   -Dsonar.projectName=profile \
                    -Dsonar.projectVersion=1.0 \
                    -Dsonar.sources=src/ \
                    -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
@@ -53,15 +53,15 @@ pipeline {
 	nexusArtifactUploader(
     nexusVersion: 'nexus3',
     protocol: 'http',
-    nexusUrl: '172.31.22.20:8081',
+    nexusUrl: '000.00.00.00:8081',
     groupId: 'QA',
     version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
     repository: 'test101',
     credentialsId: 'nexuslogin',
     artifacts: [
-        [artifactId: 'vproapp',
+        [artifactId: 'vroapp',
          classifier: '',
-         file: 'target/vprofile-v2.war',
+         file: 'target/profl2.war',
          type: 'war']
     ]
  )
